@@ -1,0 +1,190 @@
+/* FIND — functional navigation and editorial footer */
+html {
+    scroll-behavior:smooth
+}
+#listings {
+    scroll-margin-top:35px
+}
+.top nav a:focus-visible,.find-footer a:focus-visible {
+    outline:2px solid #1d2629;
+    outline-offset:5px;
+    border-radius:3px
+}
+.find-footer {
+    background:#f2f3f0;
+    border-top:1px solid #e0e3df;
+    color:#1d2426;
+    margin-top:0
+}
+.find-footer-inner {
+    max-width:1320px;
+    margin:auto;
+    padding:78px 28px 28px
+}
+.find-footer-top {
+    display:flex;
+    justify-content:space-between;
+    gap:70px;
+    padding-bottom:70px
+}
+.find-footer-intro {
+    max-width:420px
+}
+.find-footer-intro .logo {
+    display:inline-block;
+    margin-bottom:22px
+}
+.find-footer-intro p {
+    color:#697174;
+    font-size:14px;
+    line-height:1.85;
+    margin:0
+}
+.find-footer-links {
+    display:flex;
+    gap:clamp(45px,7vw,120px)
+}
+.find-footer-links>div {
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:16px
+}
+.find-footer-links h4 {
+    font-size:11px;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    color:#81898b;
+    margin:0 0 7px
+}
+.find-footer-links a {
+    font-size:13px;
+    font-weight:600;
+    color:#293033;
+    text-decoration:none;
+    transition:color .2s,transform .2s
+}
+.find-footer-links a:hover {
+    color:#757e80;
+    transform:translateX(3px)
+}
+.find-footer-bottom {
+    border-top:1px solid #dce0dd;
+    padding-top:25px;
+    display:flex;
+    justify-content:space-between;
+    gap:18px;
+    color:#788184;
+    font-size:11px;
+    letter-spacing:.01em
+}
+.architecture-story {
+    min-height:610px;
+    position:relative;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    background:linear-gradient(115deg,#f1f1ec,#e5e9e5 65%,#dce2e0);
+    overflow:hidden;
+    padding:60px max(28px,calc((100vw - 1260px)/2));
+    isolation:isolate
+}
+.architecture-story-copy {
+    position:relative;
+    z-index:2;
+    max-width:520px
+}
+.architecture-story h2 {
+    font-family:Manrope,sans-serif;
+    font-size:clamp(38px,4.5vw,65px);
+    line-height:1.13;
+    letter-spacing:-.065em;
+    margin:20px 0 22px;
+    color:#182023
+}
+.architecture-story h2 em {
+    font-weight:500
+}
+.architecture-story p {
+    font-size:15px;
+    color:#657074;
+    line-height:1.8;
+    max-width:350px
+}
+.architecture-story-link {
+    display:inline-flex;
+    align-items:center;
+    gap:14px;
+    color:#172023;
+    font-weight:700;
+    font-size:13px;
+    margin-top:18px;
+    text-decoration:none;
+    border-bottom:1px solid #172023;
+    padding-bottom:10px
+}
+.architecture-stage {
+    height:500px;
+    position:relative;
+    perspective:1100px;
+    display:flex;
+    align-items:center;
+    justify-content:center
+}
+.architecture-building {
+    width:min(100%,500px);
+    height:auto;
+    max-height:570px;
+    object-fit:contain;
+    filter:drop-shadow(20px 35px 25px #3d4a4938);
+    transform:translate3d(0,calc((1 - var(--building-progress,0))*125px),0) rotateY(calc((1 - var(--building-progress,0))*-24deg)) rotateX(calc((1 - var(--building-progress,0))*7deg)) scale(calc(.82 + var(--building-progress,0)*.2));
+    opacity:calc(.2 + var(--building-progress,0)*.8);
+    will-change:transform,opacity;
+    transition:transform .12s linear,opacity .12s linear
+}
+@media(max-width:780px) {
+    .find-footer-inner {
+        padding:48px 24px 24px
+    }
+    .find-footer-top {
+        flex-direction:column;
+        gap:40px;
+        padding-bottom:42px
+    }
+    .find-footer-links {
+        gap:45px;
+        flex-wrap:wrap
+    }
+    .find-footer-bottom {
+        flex-direction:column
+    }
+    .architecture-story {
+        grid-template-columns:1fr;
+        padding:70px 26px 20px;
+        min-height:auto
+    }
+    .architecture-stage {
+        height:370px
+    }
+    .architecture-building {
+        max-height:400px
+    }
+    .architecture-story h2 {
+        letter-spacing:-.04em
+    }
+}
+@media(prefers-reduced-motion:reduce) {
+    html {
+        scroll-behavior:auto
+    }
+    .architecture-building {
+        transform:none
+        !important
+        ;
+        opacity:1
+        !important
+        ;
+        transition:none
+        !important
+    }
+}

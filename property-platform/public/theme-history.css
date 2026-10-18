@@ -1,0 +1,289 @@
+/* FIND: synced light/dark palette and customer enquiry archive */
+.header-actions {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-width:0
+}
+.find-theme-switch {
+    position:relative;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    width:61px;
+    height:33px;
+    border:1px solid #cfd4d1;
+    border-radius:50px;
+    padding:0 8px;
+    background:#e6e8e5;
+    color:#6c746e;
+    cursor:pointer;
+    transition:background .3s,border-color .3s
+}
+.find-theme-switch .theme-knob {
+    position:absolute;
+    left:4px;
+    top:4px;
+    width:23px;
+    height:23px;
+    background:#fff;
+    border-radius:50%;
+    box-shadow:0 2px 8px #0002;
+    transition:transform .3s
+}
+.find-theme-switch[aria-checked=true] {
+    background:#22272b;
+    border-color:#42484d;
+    color:#f7d681
+}
+.find-theme-switch[aria-checked=true] .theme-knob {
+    transform:translateX(28px);
+    background:#343c42
+}
+.find-theme-switch i {
+    font-size:12px;
+    z-index:1
+}
+.find-theme-switch:focus-visible {
+    outline:2px solid #9eafa5;
+    outline-offset:3px
+}
+#toast {
+    display:none
+    !important
+}
+#findToastStack {
+    position:fixed;
+    top:84px;
+    right:20px;
+    z-index:99999;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    width:min(380px,calc(100vw - 32px));
+    pointer-events:none
+}
+.find-toast {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:var(--find-toast-bg,#fff);
+    color:var(--find-toast-text,#252b28);
+    border:1px solid var(--find-toast-border,#dce4df);
+    border-left:4px solid #3c9470;
+    border-radius:13px;
+    padding:14px 12px;
+    box-shadow:0 12px 40px #0002;
+    animation:findToastIn .25s ease both;
+    pointer-events:auto;
+    font-size:13px
+}
+.find-toast.error {
+    border-left-color:#c54e4e
+}
+.find-toast>i {
+    color:#3c9470;
+    font-size:17px
+}
+.find-toast.error>i {
+    color:#c54e4e
+}
+.find-toast span {
+    flex:1;
+    line-height:1.5
+}
+.find-toast button {
+    background:transparent;
+    border:0;
+    color:inherit;
+    cursor:pointer;
+    padding:6px
+}
+@keyframes findToastIn {
+    from {
+        opacity:0;
+        transform:translateY(-8px)
+    }
+    to {
+        opacity:1;
+        transform:none
+    }
+}
+.admin-toolbar {
+    display:flex;
+    justify-content:flex-end;
+    margin:12px 0 22px
+}
+.history-workspace {
+    padding-bottom:50px
+}
+.history-panel {
+    margin-top:22px
+}
+.history-list {
+    display:grid;
+    gap:14px;
+    margin-top:20px
+}
+.history-item,.history-event {
+    padding:20px;
+    border:1px solid var(--find-border,#dfe5e0);
+    border-radius:14px;
+    background:var(--find-card,#fff)
+}
+.history-item-head {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap
+}
+.history-item p,.history-event p {
+    color:var(--find-muted,#66736c);
+    font-size:13px;
+    line-height:1.6;
+    overflow-wrap:anywhere
+}
+.history-note {
+    margin:12px 0
+}
+.history-event {
+    display:flex;
+    align-items:flex-start;
+    gap:15px
+}
+.history-event-icon {
+    width:36px;
+    height:36px;
+    border-radius:10px;
+    background:#eaf1eb;
+    color:#43856b;
+    display:grid;
+    place-items:center;
+    flex-shrink:0
+}
+html[data-theme=dark] {
+    color-scheme:dark;
+    --find-card:#20262a;
+    --find-border:#3b4548;
+    --find-muted:#a8b6b7;
+    --find-toast-bg:#252c30;
+    --find-toast-text:#eef1f0;
+    --find-toast-border:#465153;
+    background:#111719;
+    color:#e8eeec
+}
+html[data-theme=dark] body,html[data-theme=dark] main {
+    background:#111719
+    !important
+    ;
+    color:#e8eeec
+    !important
+}
+html[data-theme=dark] .top,html[data-theme=dark] .panel,html[data-theme=dark] .admin-card,html[data-theme=dark] .access-user,html[data-theme=dark] .account-menu,html[data-theme=dark] .find-footer,html[data-theme=dark] .find-footer-inner,html[data-theme=dark] .stat,html[data-theme=dark] .history-panel {
+    background:#20262a
+    !important
+    ;
+    color:#e8eeec
+    !important
+    ;
+    border-color:#3b4548
+    !important
+}
+html[data-theme=dark] h1,html[data-theme=dark] h2,html[data-theme=dark] h3,html[data-theme=dark] h4,html[data-theme=dark] strong,html[data-theme=dark] .logo,html[data-theme=dark] .top a,html[data-theme=dark] .account-menu a {
+    color:#f0f3f2
+    !important
+}
+html[data-theme=dark] .muted,html[data-theme=dark] .admin-meta,html[data-theme=dark] .find-footer p,html[data-theme=dark] .find-footer a {
+    color:#b0bdbb
+    !important
+}
+html[data-theme=dark] input,html[data-theme=dark] textarea,html[data-theme=dark] select,html[data-theme=dark] .custom-select,html[data-theme=dark] .auth-modal,html[data-theme=dark] .access-modal,html[data-theme=dark] .find-modal {
+    background:#252e32
+    !important
+    ;
+    color:#f0f3f2
+    !important
+    ;
+    border-color:#4b5559
+    !important
+}
+html[data-theme=dark] input::placeholder,html[data-theme=dark] textarea::placeholder {
+    color:#a0adae
+}
+html[data-theme=dark] .btn.secondary {
+    background:#303b3e
+    !important
+    ;
+    color:#f0f3f2
+    !important
+    ;
+    border-color:#4b5559
+    !important
+}
+html[data-theme=dark] .find-footer-bottom {
+    border-color:#3b4548
+    !important
+}
+html[data-theme=dark] .history-event-icon {
+    background:#33473d;
+    color:#9ce0bb
+}
+@media(max-width:900px) {
+    .header-actions {
+        gap:6px
+    }
+    .find-theme-switch {
+        width:55px;
+        height:30px
+    }
+    .find-theme-switch .theme-knob {
+        width:20px;
+        height:20px
+    }
+    .find-theme-switch[aria-checked=true] .theme-knob {
+        transform:translateX(25px)
+    }
+    .admin-toolbar {
+        justify-content:flex-start
+    }
+}
+@media(max-width:600px) {
+    .find-theme-switch {
+        width:52px;
+        height:28px
+    }
+    .find-theme-switch .theme-knob {
+        width:18px;
+        height:18px
+    }
+    .find-theme-switch[aria-checked=true] .theme-knob {
+        transform:translateX(24px)
+    }
+    #findToastStack {
+        top:68px;
+        right:12px;
+        width:calc(100vw - 24px)
+    }
+    .history-item,.history-event {
+        padding:14px
+    }
+    .history-workspace .admin-heading {
+        gap:14px;
+        flex-wrap:wrap
+    }
+    .history-item-head {
+        align-items:flex-start
+    }
+    .admin-toolbar .btn {
+        width:100%;
+        justify-content:center
+    }
+}
+@media(prefers-reduced-motion:reduce) {
+    .find-toast,.find-theme-switch,.find-theme-switch .theme-knob {
+        animation:none;
+        transition:none
+    }
+}

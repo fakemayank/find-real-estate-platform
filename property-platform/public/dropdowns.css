@@ -1,0 +1,149 @@
+/* FIND custom dropdowns: consistent with the light account menu */
+.find-select {
+    position:relative;
+    min-width:0;
+    width:100%;
+    isolation:isolate
+}
+.find-select>select {
+    position:absolute
+    !important
+    ;
+    inset:0
+    !important
+    ;
+    width:100%
+    !important
+    ;
+    height:100%
+    !important
+    ;
+    opacity:0
+    !important
+    ;
+    pointer-events:none
+    !important
+    ;
+    z-index:-1
+    !important
+}
+.find-select-trigger {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    width:100%;
+    min-height:45px;
+    padding:11px 14px;
+    background:#fff;
+    border:1px solid #d9dfe4;
+    border-radius:9px;
+    color:#232b31;
+    font:500 13px 'DM Sans',sans-serif;
+    text-align:left;
+    cursor:pointer;
+    transition:border-color .18s,box-shadow .18s,background .18s
+}
+.find-select-trigger:hover {
+    border-color:#aab2b6;
+    background:#fcfcfb
+}
+.find-select-trigger:focus-visible,.find-select.open>.find-select-trigger {
+    outline:none;
+    border-color:#444c51;
+    box-shadow:0 0 0 3px rgba(30,37,41,.08)
+}
+.find-select-trigger i {
+    font-size:12px;
+    color:#777e83;
+    transition:transform .18s
+}
+.find-select.open>.find-select-trigger i {
+    transform:rotate(180deg)
+}
+.find-select-panel {
+    position:absolute;
+    top:calc(100% + 7px);
+    left:0;
+    right:0;
+    min-width:100%;
+    max-height:245px;
+    overflow:auto;
+    overscroll-behavior:contain;
+    z-index:150;
+    background:#fff;
+    border:1px solid #e7e8e7;
+    border-radius:12px;
+    padding:6px;
+    box-shadow:0 18px 46px rgba(21,24,26,.15);
+    animation:find-select-in .16s ease both
+}
+.find-select-panel[hidden] {
+    display:none
+    !important
+}
+.find-select-option {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    position:relative;
+    width:100%;
+    padding:11px 12px;
+    border:0;
+    border-radius:7px;
+    background:transparent;
+    color:#303538;
+    font:500 13px 'DM Sans',sans-serif;
+    text-align:left;
+    cursor:pointer
+}
+.find-select-option::before {
+    content:'';
+    position:absolute;
+    left:0;
+    top:7px;
+    bottom:7px;
+    width:3px;
+    border-radius:4px;
+    background:#252b2d;
+    opacity:0;
+    transition:opacity .15s
+}
+.find-select-option:hover,.find-select-option:focus-visible {
+    background:#f2f3f1;
+    outline:none
+}
+.find-select-option:hover::before,.find-select-option:focus-visible::before,.find-select-option[aria-selected=true]::before {
+    opacity:1
+}
+.find-select-option[aria-selected=true] {
+    background:#f5f6f4;
+    font-weight:700
+}
+.find-select-option i {
+    font-size:12px;
+    color:#308e66
+}
+.find-select-option:disabled {
+    opacity:.45;
+    cursor:not-allowed
+}
+@keyframes find-select-in {
+    from {
+        opacity:0;
+        transform:translateY(-5px)
+    }
+    to {
+        opacity:1;
+        transform:translateY(0)
+    }
+}
+@media(prefers-reduced-motion:reduce) {
+    .find-select-panel {
+        animation:none
+    }
+    .find-select-trigger,.find-select-trigger i {
+        transition:none
+    }
+}

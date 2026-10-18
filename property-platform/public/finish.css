@@ -1,0 +1,204 @@
+/* FIND — calm, neutral editorial controls; no blue focus or glow. */
+:root {
+    --focus:#252525;
+    --input-border:#d8d8d8;
+    --input-bg:#fff
+}
+html {
+    scrollbar-color:#a3a3a3 #f5f5f5
+}
+::-webkit-scrollbar-track {
+    background:#f5f5f5
+}
+::-webkit-scrollbar-thumb {
+    background:#b6b6b6;
+    border-color:#f5f5f5
+}
+main input:not([type=checkbox]):not([type=radio]):not([type=file]),main textarea,main select, .searchbar input,.searchbar select,.floating-field .input {
+    appearance:none;
+    -webkit-appearance:none;
+    background:#fff
+    !important
+    ;
+    color:#1d1d1d
+    !important
+    ;
+    border:1px solid var(--input-border)
+    !important
+    ;
+    border-radius:9px
+    !important
+    ;
+    box-shadow:none
+    !important
+    ;
+    outline:none;
+    min-height:48px;
+    transition:border-color .22s ease,box-shadow .22s ease,transform .22s ease
+}
+main input:hover,main textarea:hover,main select:hover {
+    border-color:#a5a5a5
+    !important
+}
+main input:focus,main textarea:focus,main select:focus,.floating-field .input:focus {
+    border-color:#242424
+    !important
+    ;
+    box-shadow:0 0 0 3px #1111110d
+    !important
+}
+main input::placeholder,main textarea::placeholder,.searchbar input::placeholder {
+    color:#999
+    !important
+    ;
+    opacity:1
+}
+main select,.searchbar select {
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")
+    !important
+    ;
+    background-repeat:no-repeat
+    !important
+    ;
+    background-position:right 14px center
+    !important
+    ;
+    padding-right:39px
+    !important
+    ;
+    cursor:pointer
+}
+main select option {
+    color:#222;
+    background:#fff
+}
+.floating-field>span:not(.select-caption) {
+    color:#777
+    !important
+}
+.floating-field .input:focus+span,.floating-field .input:not(:placeholder-shown)+span,.floating-field .select-caption {
+    color:#333
+    !important
+}
+main .formgrid label {
+    color:#353535
+    !important
+}
+main .tag {
+    background:#f1f1f1
+    !important
+    ;
+    color:#353535
+    !important
+}
+main .property-arrow {
+    color:#222
+    !important
+    ;
+    border-color:#e1e1e1
+    !important
+}
+main .property-location i,main .back-link i,main .eyebrow i {
+    color:#4c4c4c
+    !important
+}
+main .btn:not(.danger) {
+    background:#191919;
+    color:#fff;
+    border-color:#191919
+}
+main .btn.secondary {
+    background:#fff
+    !important
+    ;
+    color:#202020
+    !important
+    ;
+    border:1px solid #d5d5d5
+    !important
+}
+main .btn.secondary:hover {
+    background:#f5f5f5
+    !important
+}
+main .btn:hover {
+    transform:translateY(-2px);
+    box-shadow:0 10px 22px #1112
+}
+main .panel,main .item {
+    transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease
+}
+main .panel:hover {
+    box-shadow:0 16px 40px #1111110b
+}
+.owner-photos {
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin:12px 0
+}
+.owner-photos img {
+    width:92px;
+    height:76px;
+    object-fit:cover;
+    border-radius:9px;
+    border:1px solid #e5e5e5;
+    transition:transform .28s ease,box-shadow .28s ease
+}
+.owner-photos img:hover {
+    transform:translateY(-3px) scale(1.035);
+    box-shadow:0 8px 18px #0002
+}
+.upload-action {
+    position:relative;
+    cursor:pointer
+}
+.upload-action input {
+    display:none
+    !important
+}
+.upload-status {
+    font-size:12px;
+    color:#595959;
+    margin-top:10px;
+    min-height:15px
+}
+.uploading {
+    opacity:.72;
+    pointer-events:none
+}
+.auth-card .floating-field .input {
+    background:#fff
+    !important
+}
+.auth-card .auth-switch a {
+    color:#222
+    !important
+}
+.auth-card .auth-title:before,.auth-card .auth-title:after {
+    background:#333
+    !important
+}
+.searchbar {
+    background:#fff
+    !important
+    ;
+    border-color:#e6e6e6
+    !important
+}
+.searchbar input:focus,.searchbar select:focus {
+    border-color:#242424
+    !important
+    ;
+    box-shadow:0 0 0 3px #1111110d
+    !important
+}
+@media(prefers-reduced-motion:reduce) {
+    main .panel,main .item,.owner-photos img {
+        transition:none
+        !important
+        ;
+        transform:none
+        !important
+    }
+}

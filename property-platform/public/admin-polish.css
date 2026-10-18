@@ -1,0 +1,344 @@
+/* FIND admin workspace — airy editorial light design */
+.admin-workspace {
+    padding-top:46px;
+    padding-bottom:90px
+}
+.admin-heading {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:24px;
+    margin-bottom:30px
+}
+.admin-heading h2 {
+    margin:12px 0 8px
+}
+.admin-heading .muted {
+    margin:0;
+    line-height:1.65
+}
+.admin-overview {
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:18px;
+    margin-bottom:28px
+}
+.admin-overview>div {
+    background:#fff;
+    border:1px solid #e6e9ed;
+    border-radius:13px;
+    padding:20px 24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px
+}
+.admin-overview span {
+    font-size:13px;
+    color:#6b737b
+}
+.admin-overview strong {
+    font-size:27px;
+    color:#1e2429
+}
+.admin-columns {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:26px;
+    align-items:start
+}
+.admin-section {
+    min-width:0;
+    padding:28px
+    !important
+    ;
+    border-radius:14px
+    !important
+}
+.admin-section-heading {
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:24px
+}
+.admin-section-heading h2 {
+    margin:9px 0 0;
+    font-size:23px
+}
+.admin-count {
+    font-size:12px;
+    color:#69747e;
+    white-space:nowrap
+}
+.admin-list {
+    display:flex;
+    flex-direction:column;
+    gap:22px
+}
+.admin-card {
+    min-width:0;
+    border:1px solid #e3e8ed;
+    background:#fff;
+    border-radius:12px;
+    padding:24px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    box-shadow:0 8px 24px rgba(21,31,40,.025)
+}
+.admin-card-title {
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:12px
+}
+.admin-card-title h3 {
+    margin:0;
+    font-size:18px;
+    line-height:1.45;
+    overflow-wrap:anywhere
+}
+.admin-meta {
+    color:#77828b;
+    font-size:12px;
+    line-height:1.8;
+    margin:0;
+    overflow-wrap:anywhere
+}
+.admin-meta i {
+    margin-right:4px
+}
+.admin-meta span {
+    margin:0 4px
+}
+.admin-property-photo {
+    width:180px;
+    max-width:100%;
+    height:108px;
+    object-fit:cover;
+    border-radius:10px
+}
+.admin-description {
+    font-size:13px;
+    color:#66737e;
+    line-height:1.85;
+    margin:0;
+    overflow-wrap:anywhere
+}
+.admin-card-footer {
+    padding-top:16px;
+    border-top:1px solid #edf0f2;
+    display:flex;
+    justify-content:flex-start
+}
+.admin-actions {
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px
+}
+.admin-actions .btn,.admin-card-footer .btn {
+    margin:0
+    !important
+}
+.admin-field-label,.admin-form label {
+    display:block;
+    font-size:12px;
+    font-weight:700;
+    color:#343e46;
+    margin:0 0 7px
+}
+.admin-review-note {
+    min-height:75px
+}
+.admin-form {
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+    padding-top:18px;
+    border-top:1px solid #edf0f2
+}
+.admin-form select,.admin-form textarea,.admin-review-note {
+    width:100%;
+    box-sizing:border-box;
+    background:#fff;
+    border:1px solid #d9dfe4;
+    border-radius:9px;
+    color:#232b31;
+    padding:13px 14px;
+    font:inherit;
+    outline:none
+}
+.admin-form select:focus,.admin-form textarea:focus,.admin-review-note:focus {
+    border-color:#454f57;
+    box-shadow:0 0 0 3px rgba(25,35,42,.08)
+}
+.admin-form textarea {
+    resize:vertical;
+    min-height:100px
+}
+.admin-form label:not(:first-child) {
+    margin-top:8px
+}
+.admin-form label small {
+    color:#929aa0;
+    font-weight:400
+}
+.admin-form .btn {
+    align-self:flex-start;
+    margin-top:8px
+}
+.enquiry-contact {
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:7px 12px;
+    font-size:13px;
+    overflow-wrap:anywhere
+}
+.enquiry-contact strong {
+    width:100%;
+    font-size:14px
+}
+.enquiry-contact a {
+    color:#526574;
+    text-decoration:none;
+    overflow-wrap:anywhere
+}
+.enquiry-contact a:hover {
+    text-decoration:underline
+}
+.enquiry-message {
+    margin:0;
+    padding:14px 16px;
+    background:#f6f8f9;
+    border-radius:9px;
+    font-size:13px;
+    line-height:1.7;
+    overflow-wrap:anywhere
+}
+.review-reason {
+    font-size:12px;
+    color:#a56a27;
+    background:#fff8ed;
+    padding:12px;
+    border-radius:8px
+}
+.admin-empty {
+    padding:38px 16px;
+    text-align:center;
+    color:#8a939a;
+    border:1px dashed #dce1e5;
+    border-radius:12px
+}
+.status-pill {
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    border-radius:999px;
+    padding:7px 11px;
+    font-size:10px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    white-space:nowrap;
+    border:1px solid transparent
+}
+.status-pill i {
+    font-size:7px
+}
+.status-approved,.status-contacted {
+    color:#18754b;
+    background:#e7f7ed;
+    border-color:#b9e7cb
+}
+.status-pending,.status-new {
+    color:#95600a;
+    background:#fff4d7;
+    border-color:#f6d991
+}
+.status-rejected {
+    color:#ba3c3c;
+    background:#ffeded;
+    border-color:#f5c5c5
+}
+.status-draft {
+    color:#566574;
+    background:#edf1f5;
+    border-color:#dce3ea
+}
+.status-closed {
+    color:#566574;
+    background:#edf1f5;
+    border-color:#dce3ea
+}
+@media(max-width:1050px) {
+    .admin-columns {
+        grid-template-columns:1fr
+    }
+}
+@media(max-width:640px) {
+    .admin-workspace {
+        padding-top:24px
+    }
+    .admin-heading {
+        align-items:flex-start;
+        flex-direction:column
+    }
+    .admin-overview {
+        gap:8px
+    }
+    .admin-overview>div {
+        padding:14px;
+        flex-direction:column;
+        align-items:flex-start
+    }
+    .admin-overview strong {
+        font-size:22px
+    }
+    .admin-section {
+        padding:16px
+        !important
+    }
+    .admin-card {
+        padding:17px
+    }
+    .admin-card-title {
+        flex-wrap:wrap
+    }
+    .admin-section-heading h2 {
+        font-size:19px
+    }
+}
+
+/* Compact moderation controls — consistent across desktop and mobile */
+.admin-workspace .admin-section { padding: 22px !important; }
+.admin-workspace .admin-list { gap: 12px; }
+.admin-workspace .admin-card { padding: 16px; gap: 12px; }
+.admin-workspace .admin-section-heading { margin-bottom: 16px; }
+.admin-workspace .admin-card-title h3 { font-size: 16px; }
+.admin-workspace .admin-description { line-height: 1.6; }
+.admin-workspace .admin-card-footer { padding-top: 12px; }
+.admin-workspace .admin-actions { gap: 8px; }
+.admin-workspace .admin-form { gap: 7px; padding-top: 12px; }
+.admin-workspace .admin-form select,
+.admin-workspace .admin-form textarea,
+.admin-workspace .admin-review-note { padding: 9px 11px; font-size: 13px; }
+.admin-workspace .admin-form textarea { min-height: 72px; }
+.admin-workspace .btn,
+.admin-workspace button.btn,
+.admin-workspace .admin-form .btn {
+  min-height: 34px !important; height: auto !important;
+  padding: 7px 12px !important; font-size: 12px !important;
+  line-height: 1.35 !important; border-radius: 8px !important;
+  box-shadow: none !important; display: inline-flex;
+  align-items: center; justify-content: center; gap: 6px;
+}
+.admin-workspace .btn:hover { box-shadow: 0 3px 10px rgba(30,40,45,.10) !important; }
+.admin-workspace .btn:active { transform: translateY(1px); }
+@media (max-width: 640px) {
+  .admin-workspace .admin-section { padding: 14px !important; }
+  .admin-workspace .admin-card { padding: 13px; }
+  .admin-workspace .admin-actions { width: 100%; }
+  .admin-workspace .admin-actions .btn { flex: 0 1 auto; }
+}

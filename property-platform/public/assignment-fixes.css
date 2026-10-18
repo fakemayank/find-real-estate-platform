@@ -1,0 +1,81 @@
+/* Submission-ready owner form: compact, responsive, accessible preview */
+.owner-create-media {
+    display:grid;
+    gap:12px;
+    min-width:0
+}
+.owner-create-media label {
+    display:grid;
+    gap:8px;
+    font-weight:600
+}
+.owner-create-media input[type=file] {
+    width:100%;
+    max-width:100%;
+    padding:12px;
+    border:1px dashed #cbd2d0;
+    border-radius:10px;
+    background:#f8faf9;
+    color:#25312d;
+    font:inherit
+}
+.owner-form-actions {
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    align-items:center
+}
+.owner-form-actions .btn {
+    min-height:40px;
+    min-width:0
+}
+.owner-preview-dialog {
+    background:#fff;
+    color:#202725;
+    width:min(720px,calc(100vw - 32px));
+    max-height:min(90vh,900px);
+    overflow:auto;
+    border-radius:16px;
+    padding:clamp(16px,3vw,28px);
+    box-shadow:0 25px 90px #0003
+}
+.owner-preview-images {
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    padding:8px 0
+}
+.owner-preview-images img {
+    width:160px;
+    height:120px;
+    object-fit:cover;
+    border-radius:9px;
+    flex:none
+}
+.owner-preview-dialog h2 {
+    overflow-wrap:anywhere
+}
+@media(max-width:600px) {
+    .owner-form-actions {
+        flex-direction:column;
+        align-items:stretch
+    }
+    .owner-form-actions .btn {
+        width:100%
+    }
+    .owner-preview-images img {
+        width:130px;
+        height:105px
+    }
+}
+
+/* Owner listing preview: consistent gallery for local and uploaded photos */
+.owner-preview-gallery{display:grid;gap:10px;margin:16px 0;min-width:0}
+.owner-preview-main-image{display:block;width:100%;height:clamp(180px,34vw,340px);object-fit:cover;border-radius:12px;background:#f0f2ef}
+.owner-preview-thumbnails{display:flex;gap:8px;overflow-x:auto;padding:2px 1px 6px}
+.owner-preview-thumb{appearance:none;flex:0 0 76px;height:60px;border:2px solid transparent;border-radius:9px;padding:2px;background:transparent;cursor:pointer}
+.owner-preview-thumb.active,.owner-preview-thumb:focus-visible{border-color:#4e8067;outline:none}
+.owner-preview-thumb img{width:100%;height:100%;object-fit:cover;border-radius:5px}
+.owner-preview-empty{min-height:190px;border:1px dashed #cad5cc;background:#f6f8f5;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#63776a;text-align:center;padding:18px}
+.owner-preview-empty i{font-size:28px}
+@media(max-width:600px){.owner-preview-main-image{height:210px}.owner-preview-thumb{flex-basis:65px;height:54px}}

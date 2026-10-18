@@ -1,0 +1,302 @@
+/* FIND unified visual tokens. Loaded last so theme state controls every page. */
+html[data-theme="light"] {
+    color-scheme:light;
+    --ui-bg:#fafbf9;
+    --ui-surface:#fff;
+    --ui-surface-alt:#f1f4f2;
+    --ui-text:#202725;
+    --ui-muted:#64716d;
+    --ui-border:#dfe5e1;
+    --ui-input:#fff;
+    --ui-link:#253a32;
+    --ui-shadow:0 14px 36px #26382a0b;
+    --ui-soft:#e9efeb;
+    --ui-footer:#f4f6f3;
+    --ui-focus:#638b79
+}
+html[data-theme="dark"] {
+    color-scheme:dark;
+    --ui-bg:#111719;
+    --ui-surface:#20282b;
+    --ui-surface-alt:#293337;
+    --ui-text:#eef3f0;
+    --ui-muted:#b5c2bf;
+    --ui-border:#425055;
+    --ui-input:#273237;
+    --ui-link:#d8f0e3;
+    --ui-shadow:0 14px 36px #0004;
+    --ui-soft:#303d3f;
+    --ui-footer:#192124;
+    --ui-focus:#92bca7
+}
+html[data-theme] body,html[data-theme] main {
+    background:var(--ui-bg)
+    !important
+    ;
+    color:var(--ui-text)
+    !important
+}
+html[data-theme] :is(.panel,.item,.property,.stat,.admin-card,.access-user,.history-item,.history-event,.history-panel,.account-menu,.find-modal,.auth-modal,.access-modal,.listing-preview-modal,.create-photo-section,.admin-workspace .admin-list > *, .dashgrid > .panel) {
+    background:var(--ui-surface)
+    !important
+    ;
+    color:var(--ui-text)
+    !important
+    ;
+    border-color:var(--ui-border)
+    !important
+    ;
+    box-shadow:var(--ui-shadow)
+}
+html[data-theme] :is(.top,.find-footer,.find-footer-inner) {
+    background:var(--ui-footer)
+    !important
+    ;
+    color:var(--ui-text)
+    !important
+    ;
+    border-color:var(--ui-border)
+    !important
+}
+html[data-theme] :is(.top a,.logo,.find-footer a,.find-footer h4,.panel h2,.panel h3,.item h3,.admin-card h3,.history-item h3,.access-user strong,.account-menu a,.listing-preview-modal h2) {
+    color:var(--ui-text)
+    !important
+}
+html[data-theme] :is(.muted,.admin-meta,.find-footer p,.find-footer small,.history-item p,.history-event p,.stat span,.access-user p,.panel p,.item p) {
+    color:var(--ui-muted)
+    !important
+}
+html[data-theme] :is(input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),select,textarea,.custom-select,.searchbar input,.searchbar select) {
+    background:var(--ui-input)
+    !important
+    ;
+    color:var(--ui-text)
+    !important
+    ;
+    border-color:var(--ui-border)
+    !important
+    ;
+    -webkit-text-fill-color:var(--ui-text)
+}
+html[data-theme] :is(input,textarea)::placeholder {
+    color:var(--ui-muted)
+    !important
+    ;
+    opacity:.85
+}
+html[data-theme] :is(input,textarea,select,button,a):focus-visible {
+    outline:2px solid var(--ui-focus)
+    !important
+    ;
+    outline-offset:3px
+}
+html[data-theme] :is(.searchbar,.find-photo-thumbs,.find-photo-dialog,.create-photo-pick,.preview-gallery,.history-event-icon) {
+    background:var(--ui-surface)
+    !important
+    ;
+    color:var(--ui-text)
+    !important
+    ;
+    border-color:var(--ui-border)
+    !important
+}
+html[data-theme] :is(.btn.secondary,.btn.outline,.account-menu button,.access-user button:not(.danger)) {
+    background:var(--ui-surface-alt)
+    !important
+    ;
+    color:var(--ui-text)
+    !important
+    ;
+    border-color:var(--ui-border)
+    !important
+}
+html[data-theme] :is(.admin-card,.access-user,.history-item,.item) {
+    overflow-wrap:anywhere
+}
+html[data-theme] .find-footer-bottom {
+    border-color:var(--ui-border)
+    !important
+    ;
+    color:var(--ui-muted)
+    !important
+}
+html[data-theme] .find-footer-contact :is(a,p,span,i) {
+    color:var(--ui-text)
+    !important
+}
+html[data-theme] :is(.editorial-band,.discover-intro,.architecture-story) {
+    background:var(--ui-surface-alt)
+    !important
+    ;
+    color:var(--ui-text)
+    !important
+}
+html[data-theme] :is(.architecture-story h2,.architecture-story h2 em,.editorial-band h2,.editorial-band h2 em,.discover-intro h2,.discover-intro h2 em,.architecture-story-link,.editorial-link) {
+    color:var(--ui-text)
+    !important
+}
+html[data-theme] :is(.architecture-story p,.editorial-band p,.discover-intro p) {
+    color:var(--ui-muted)
+    !important
+}
+html[data-theme] :is(.architecture-story-link,.editorial-link) {
+    border-color:var(--ui-text)
+    !important
+}
+/* Light-background story formerly inherited white text from a dark hero. */
+html[data-theme="light"] :is(.architecture-story,.editorial-band,.discover-intro) :is(h1,h2,h3,h4,em,strong) {
+    color:#24312d
+    !important
+    ;
+    text-shadow:none
+    !important
+}
+html[data-theme="dark"] :is(.architecture-story,.editorial-band,.discover-intro) :is(h1,h2,h3,h4,em,strong) {
+    color:#edf3ef
+    !important
+    ;
+    text-shadow:none
+    !important
+}
+html[data-theme="dark"] .architecture-building {
+    filter:drop-shadow(18px 24px 26px #0008) brightness(.88) contrast(1.05)
+}
+html[data-theme] .find-theme-switch {
+    border-color:var(--ui-border)
+    !important
+}
+html[data-theme="light"] .top {
+    background:#fff
+    !important
+}
+html[data-theme="dark"] .top {
+    background:#20282b
+    !important
+}
+html[data-theme="dark"] .find-hero {
+    background-color:#1d2a2c
+    !important
+}
+html[data-theme="dark"] .hero-photo {
+    filter:brightness(.62)
+}
+html[data-theme="dark"] .find-hero:before {
+    background:linear-gradient(180deg,#152225b5,#15222555 70%)
+    !important
+}
+html[data-theme="dark"] .find-hero :is(h1,p,.eyebrow) {
+    color:#f1f5f2
+    !important
+}
+html[data-theme="dark"] .find-hero .hero-cta {
+    background:#f1f5f2
+    !important
+    ;
+    color:#172321
+    !important
+}
+html[data-theme="dark"] .find-hero .hero-cta i {
+    color:#172321
+    !important
+}
+html[data-theme] .find-toast {
+    background:var(--ui-surface)
+    !important
+    ;
+    color:var(--ui-text)
+    !important
+    ;
+    border-color:var(--ui-border)
+    !important
+}
+html[data-theme] .find-toast.error {
+    border-left-color:#cf6262
+    !important
+}
+html[data-theme] .find-toast:not(.error) {
+    border-left-color:#47976f
+    !important
+}
+html[data-theme] .history-event-icon {
+    background:var(--ui-soft)
+    !important
+    ;
+    color:var(--ui-text)
+    !important
+}
+html[data-theme] .create-photo-pick {
+    border-style:dashed
+    !important
+}
+html[data-theme] :is(.account-menu,.custom-select-menu,.select-options,[role="listbox"]) {
+    background:var(--ui-surface)
+    !important
+    ;
+    color:var(--ui-text)
+    !important
+    ;
+    border-color:var(--ui-border)
+    !important
+}
+html[data-theme] :is(.custom-select-menu button,.select-options button,[role="option"]) {
+    color:var(--ui-text)
+    !important
+}
+html[data-theme] :is(.custom-select-menu button:hover,.select-options button:hover,[role="option"]:hover) {
+    background:var(--ui-surface-alt)
+    !important
+}
+/* Preserve colored status badges and destructive/success actions rather than recoloring them. */
+@media(max-width:800px) {
+    html[data-theme] .top {
+        gap:10px
+    }
+    html[data-theme] .header-actions {
+        margin-left:auto
+    }
+    html[data-theme] .find-footer-top {
+        gap:28px
+        !important
+    }
+    html[data-theme] .architecture-story {
+        padding:55px 20px 20px
+        !important
+    }
+    html[data-theme] .architecture-stage {
+        min-width:0
+    }
+}
+@media(max-width:520px) {
+    html[data-theme] .top nav {
+        overflow-x:auto;
+        flex-wrap:nowrap;
+        justify-content:flex-start;
+        max-width:100%;
+        padding-bottom:7px
+    }
+    html[data-theme] .top nav a {
+        flex:0 0 auto
+    }
+    html[data-theme] .header-actions {
+        max-width:100%
+    }
+    html[data-theme] .architecture-story h2 {
+        font-size:clamp(30px,9vw,44px)
+    }
+    html[data-theme] .find-footer-links {
+        grid-template-columns:1fr 1fr
+        !important
+    }
+    html[data-theme] .find-footer-contact {
+        grid-column:1/-1
+    }
+}
+@media(prefers-reduced-motion:reduce) {
+    html[data-theme] *,html[data-theme] *::before,html[data-theme] *::after {
+        transition-duration:.01ms
+        !important
+        ;
+        animation-duration:.01ms
+        !important
+    }
+}

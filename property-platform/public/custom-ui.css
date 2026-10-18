@@ -1,0 +1,209 @@
+.find-confirm-overlay {
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    background:rgba(22,28,31,.46);
+    backdrop-filter:blur(7px);
+    display:grid;
+    place-items:center;
+    padding:20px;
+    animation:findFade .2s ease
+}
+.find-confirm-dialog {
+    background:#fff;
+    border:1px solid #e6e9e8;
+    border-radius:20px;
+    padding:30px;
+    max-width:440px;
+    width:100%;
+    box-shadow:0 25px 80px rgba(18,26,32,.2);
+    animation:findRise .22s ease
+}
+.find-confirm-icon {
+    height:48px;
+    width:48px;
+    display:grid;
+    place-items:center;
+    background:#f0f2f1;
+    border-radius:14px;
+    font-size:21px;
+    color:#303b40;
+    margin-bottom:18px
+}
+.find-confirm-icon.danger {
+    background:#fff0ee;
+    color:#bf4743
+}
+.find-confirm-dialog h2 {
+    font-size:22px;
+    margin:0 0 10px;
+    color:#1c262b
+}
+.find-confirm-dialog p {
+    line-height:1.65;
+    color:#677176;
+    margin:0 0 25px
+}
+.find-confirm-actions {
+    display:flex;
+    justify-content:flex-end;
+    gap:12px;
+    flex-wrap:wrap
+}
+.find-confirm-actions .btn {
+    display:inline-flex;
+    align-items:center;
+    gap:8px
+}
+.edit-photo-section {
+    border:1px solid #e3e7e7;
+    border-radius:16px;
+    background:#fafbfa;
+    padding:22px
+}
+.edit-photo-heading {
+    display:flex;
+    align-items:start;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:16px
+}
+.edit-photo-heading h3 {
+    font-size:17px;
+    margin:0 0 6px
+}
+.edit-photo-heading h3 i {
+    color:#42917b;
+    margin-right:8px
+}
+.edit-photo-heading p {
+    font-size:12px;
+    color:#727d81;
+    margin:0;
+    line-height:1.5
+}
+.edit-photo-heading>span {
+    white-space:nowrap;
+    background:#eaf3ee;
+    border-radius:20px;
+    color:#2f7458;
+    padding:5px 10px;
+    font-size:12px;
+    font-weight:700
+}
+.edit-photo-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(110px,1fr));
+    gap:12px;
+    margin-bottom:14px
+}
+.edit-photo-tile {
+    position:relative;
+    aspect-ratio:4/3;
+    border-radius:12px;
+    overflow:hidden
+}
+.edit-photo-tile img {
+    width:100%;
+    height:100%;
+    object-fit:cover
+}
+.edit-photo-tile button {
+    position:absolute;
+    top:7px;
+    right:7px;
+    border:0;
+    border-radius:9px;
+    background:#c34540;
+    color:white;
+    width:32px;
+    height:32px;
+    cursor:pointer;
+    box-shadow:0 3px 8px #0003
+}
+.edit-photo-upload {
+    border:1px dashed #adb8b4;
+    border-radius:14px;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:7px;
+    cursor:pointer;
+    color:#27332f;
+    background:#fff;
+    text-align:center
+}
+.edit-photo-upload>i {
+    color:#2b8c70;
+    font-size:22px
+}
+.edit-photo-upload span {
+    font-weight:700
+}
+.edit-photo-upload small {
+    color:#7b8482;
+    font-size:11px
+}
+.edit-photo-upload input {
+    display:none
+}
+.edit-photo-upload:hover {
+    background:#f1f8f4;
+    border-color:#2b8c70
+}
+.edit-photo-feedback {
+    font-size:12px;
+    color:#4a6660;
+    min-height:16px;
+    margin:10px 0 0
+}
+.find-footer-links {
+    flex-wrap:wrap
+}
+.find-footer-contact {
+    max-width:310px
+}
+.find-footer-contact p {
+    line-height:1.6;
+    margin:9px 0;
+    font-size:13px
+}
+.find-footer-contact p i {
+    width:20px;
+    color:#71857e
+}
+.find-footer-contact small {
+    opacity:.6;
+    font-size:11px
+}
+@keyframes findFade {
+    from {
+        opacity:0
+    }
+    to {
+        opacity:1
+    }
+}
+@keyframes findRise {
+    from {
+        opacity:0;
+        transform:translateY(10px) scale(.98)
+    }
+    to {
+        opacity:1;
+        transform:translateY(0) scale(1)
+    }
+}
+@media(max-width:600px) {
+    .find-confirm-dialog {
+        padding:22px
+    }
+    .find-confirm-actions .btn {
+        flex:1;
+        justify-content:center
+    }
+    .edit-photo-section {
+        padding:14px
+    }
+}
