@@ -1,0 +1,46 @@
+/* FIND responsive polish: final overrides for hero typography and alignment. */
+.find-hero .hero-copy,
+.find-hero .hero-copy h1,
+.find-hero .hero-copy p { text-align:center; }
+.find-hero .hero-bottom-note {
+  left:50%;right:auto;width:max-content;max-width:calc(100% - 28px);
+  transform:translateX(-50%);justify-content:center;text-align:center;
+  gap:clamp(8px,2.4vw,15px);
+}
+@media (max-width:767px) {
+  html,body {width:100%;max-width:100%;overflow-x:clip;}
+  .find-hero {width:100%;max-width:100%;overflow:hidden;}
+  .find-hero .hero-copy {margin-inline:auto!important;max-width:100%!important;min-width:0!important;text-align:center!important;}
+  .find-hero .hero-copy h1 {max-width:100%;margin:0 auto 14px!important;text-align:center!important;font-size:clamp(32px,9.3vw,48px)!important;line-height:1.11!important;letter-spacing:-.055em!important;text-wrap:balance;}
+  .find-hero .hero-copy p {
+    display:block!important;width:auto!important;max-width:min(100%,350px)!important;
+    margin:0 auto 22px!important;padding:0!important;border:0!important;
+    background:transparent!important;box-shadow:none!important;
+    -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+    color:#141b1b!important;font-weight:650!important;
+    font-size:clamp(12px,3.35vw,14px)!important;line-height:1.55!important;
+    text-align:center!important;
+    text-shadow:0 1px 2px rgba(255,255,255,.98),0 0 8px rgba(255,255,255,.98),0 0 20px rgba(255,255,255,.8)!important;
+  }
+  .find-hero .hero-copy p b {font-weight:900!important;color:#0a1111!important;text-shadow:inherit!important;}
+  .find-hero .hero-cta {margin:0 auto!important;justify-content:center;max-width:100%;}
+  .find-hero .hero-bottom-note {
+    left:50%!important;right:auto!important;bottom:clamp(15px,3.8vw,26px)!important;
+    width:max-content!important;max-width:calc(100% - 24px)!important;
+    transform:translateX(-50%)!important;
+    justify-content:center!important;align-items:center!important;
+    gap:clamp(7px,2.4vw,15px)!important;
+    white-space:normal!important;text-align:center!important;
+    font-size:clamp(8px,2.25vw,10px)!important;letter-spacing:clamp(.7px,.25vw,1.7px)!important;
+    line-height:1.5!important;
+  }
+  .find-hero .hero-bottom-note span {width:clamp(16px,6vw,42px)!important;flex:0 0 auto!important;}
+  .searchbar,.searchbar label,.searchbar input,.searchbar select,.searchbar .find-select {min-width:0!important;max-width:100%!important;}
+  .searchbar label>.find-select>select {display:block!important;visibility:visible!important;opacity:1!important;}
+  .sectionhead,.discover-intro,.property,.card,.panel {min-width:0;max-width:100%;}
+}
+@media(max-width:360px){
+  .find-hero .hero-copy h1{font-size:clamp(29px,9.2vw,34px)!important;}
+  .find-hero .hero-bottom-note{letter-spacing:.4px!important;gap:6px!important;}
+}
+@media (prefers-reduced-motion:reduce){.find-hero .hero-copy{animation:none!important;}}
