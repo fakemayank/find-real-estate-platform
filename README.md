@@ -213,3 +213,114 @@ For external evaluation, provide the private repository link, a reachable test d
 - Initial administrator credentials are seeded only on first database initialization.
 - Schema setup happens on application startup rather than via a dedicated migrations framework.
 - Browser/device compatibility and production security require testing in the target environment.
+
+
+## Clean page URLs
+
+The frontend uses browser History API routes rather than URL hashes. Main routes: `/`, `/search`, `/explore`, `/buy`, `/rent`, `/my-listings`, `/admin`, `/admin/access`, `/admin/enquiries`, and `/property/:id`. The Express fallback serves `index.html` for direct page refreshes. Older `/#root` and other hash bookmarks redirect to clean paths. Authentication and authorization continue to be enforced by server API routes.
+
+---
+
+# Deploying FIND to Render — start to finish
+
+These instructions are for **this repository's existing Dockerfile, Express server, and managed PostgreSQL**. You do **not** deploy `docker-compose.yml` to Render. Render runs the web service; Render Postgres is a separate managed database. Dashboard labels and available plans can change.
+
+## A. Prepare the repository
+
+1. Ensure the repository contains the `property-platform/` folder with `Dockerfile`, `package.json`, `server.js`, `public/`, and `README.md`. If those files are at repository root instead, leave **Root Directory** blank in the Render web-service settings.
+2. Add `.env` to `.gitignore` and **never commit** real secrets, database connection strings, tokens, or passwords. `.env.example` is only a template.
+3. Push your code to GitHub. For an assignment, keep the repository **private** if requested by the evaluator. Grant reviewers access separately.
+4. If you previously pushed any real credentials to a public repository, rotate those credentials. Deleting the file in a later commit does not remove the secret from Git history.
+
+## B. Create Render PostgreSQL
+
+1. Open [Render Dashboard](https://dashboard.render.com/) and choose **New → Postgres**.
+2. Give it a name such as `find-real-estate-db` and database name `findrealestate` (or accept the defaults). Select a region and plan available to your account.
+3. Wait until the database is ready. Open its **Info / Connections** section.
+4. Copy the **Internal Database URL**. This is a secret; do not paste it in chat, screenshots, GitHub or frontend files. Keep the web service and database in compatible regions/network environments so the internal URL can connect.
+5. Check the plan's storage, backup, expiration and retention terms. Free/trial databases may have limitations. Set up backups for any data you care about.
+
+## C. Create the Render Web Service
+
+1. Choose **New → Web Service** and connect your GitHub repository.
+2. Select branch `main` (or the branch containing your project).
+3. Set **Root Directory** to `property-platform` **if your repository has that nested folder**. If `Dockerfile` is already in the repository root, leave Root Directory empty.
+4. Choose the **Docker** runtime. The existing `Dockerfile` installs dependencies and runs `node server.js`; do not set a conflicting Node build/start command. Leave Dockerfile Path as `Dockerfile` relative to the selected root directory.
+5. Select an available instance plan. The application listens on `process.env.PORT || 3000` and binds to `0.0.0.0`. Render can supply `PORT` automatically; if a port setting is requested, use `3000` consistently with the Dockerfile.
+
+## D. Configure environment variables
+
+Open the web service **Environment** section. Add these keys, using your **real private values**:
+
+| Key | Value / purpose |
+| --- | --- |
+| `DATABASE_URL` | **Internal Database URL** copied from Render Postgres. Required. |
+| `SESSION_SECRET` | Unique, long, cryptographically random session-signing secret. Required. |
+| `ROOT_EMAIL` | Email for the initial administrator account. Required. |
+| `ROOT_PASSWORD` | Strong administrator password, at least 12 characters. Required. |
+| `ZIPLINE_URL` | Your working Zipline base URL, e.g. `https://img.itsmayank.in`. Required. |
+| `ZIPLINE_API_KEY` | Your private Zipline upload API token. Required. |
+| `COOKIE_SECURE` | `true` on Render HTTPS. |
+| `NODE_ENV` | `production`. |
+| `ZIPLINE_PUBLIC_URL` | Optional: only if Zipline returns images from a different trusted public origin. |
+
+**Not needed for Render-managed Postgres:** `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD` (those are for local Docker Compose). `APP_PORT` controls the *local Compose host port* and is not the Render listening port. The Render service uses `PORT` internally.
+
+Generate a random session secret on Windows PowerShell:
+
+```powershell
+[Convert]::ToHexString([Security.Cryptography.RandomNumberGenerator]::GetBytes(48))
+```
+
+Generate and store a different strong password for `ROOT_PASSWORD`. Never use the example `CHANGE_ME...` placeholders.
+
+## E. Deploy and read the logs
+
+1. Choose **Save, rebuild and deploy** after adding environment variables.
+2. Open **Deploys → latest deployment → Logs**.
+3. Expected startup line: `Property platform listening`.
+4. Open the public `https://...onrender.com` URL shown by Render. Try `/`, `/search`, `/explore`, `/my-listings`, `/admin` and `/admin/access` as appropriate for your account. The server's clean-path fallback should allow refreshing a page directly.
+5. Sign in as the seeded administrator using the `ROOT_EMAIL` and `ROOT_PASSWORD` from the first successful database initialization. Changing the environment password later **does not automatically reset an existing database account**.
+
+## F. End-to-end acceptance test on the live URL
+
+1. Create a **property owner** account; create a listing with valid details and photos; verify the preview and save it as draft.
+2. Submit the listing for review. Sign in as **administrator** and approve it.
+3. Open an incognito browser as a visitor; search for the approved listing and submit an enquiry. Ensure no private owner phone number is exposed publicly.
+4. As administrator, update the enquiry to **Contacted** or **Closed**, add internal notes, save, and confirm it appears in **Enquiry Logs** instead of the new-enquiries inbox.
+5. Test rejection, editing, image addition/removal, invalid input, incorrect passwords, and role-based access restrictions.
+6. Test the UI on a narrow phone screen (320–390 px) and desktop. Automated tests do not replace these checks.
+
+## G. Common Render deployment errors
+
+| Log/error | Likely cause and next step |
+| --- | --- |
+| `failed to read dockerfile: open Dockerfile` | Set **Root Directory** to `property-platform` if the repository contains that folder; verify Dockerfile exists there. |
+| `Error: Set DATABASE_URL` | Add `DATABASE_URL` with Render Postgres **Internal Database URL**, save and redeploy. |
+| `Error: Set SESSION_SECRET` / `ROOT_PASSWORD` | Missing/placeholder environment value. Add a real secret/password. |
+| `connect ECONNREFUSED`, `ENOTFOUND`, PostgreSQL authentication error | Verify the copied database URL, database status, region and connection settings. Do not manually combine Docker Compose credentials with Render's managed URL. |
+| Site deploys but login doesn't persist | Check `COOKIE_SECURE=true`, HTTPS, proxy configuration and PostgreSQL session storage. |
+| Site deploys but images fail to upload | Verify Zipline API token, server availability, and any trusted image origin configuration. Inspect Render **Logs** while uploading. |
+| Mobile CSS seems unchanged | Push the latest source to GitHub, confirm the new Render deployment succeeded, and refresh the browser/cache. |
+| Service is slow after inactivity | Some lower-tier services may sleep/spin down. Check the current plan's behaviour in Render dashboard. |
+
+## H. Update the live site after code changes
+
+From your local project folder (adjust the path if needed):
+
+```bash
+git status
+git add .
+git commit -m "Improve mobile layout and documentation"
+git push origin main
+```
+
+If your Render service is connected to this branch with automatic deploy enabled, pushing will start a new deployment. Otherwise use **Manual Deploy → Deploy latest commit**. Check the build/runtime logs after every deployment.
+
+## I. Local vs. hosted database and operational notes
+
+- Your existing **local Docker PostgreSQL records do not automatically transfer** to Render Postgres. A new Render database starts empty and seeds the administrator on first initialization. Migrating existing data requires a deliberate `pg_dump` / `pg_restore` workflow with careful version and credentials handling.
+- Do not run local `docker compose down -v` if you want to preserve local database data.
+- Keep your Render database private, use HTTPS and secure cookies, and protect Zipline tokens.
+- Before production use, independently verify access controls, security, upload restrictions, backups and real browser behaviour.
+- This project uses a single-page frontend with History API navigation; the web server must serve `index.html` for non-API application paths.
