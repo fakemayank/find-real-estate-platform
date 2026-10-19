@@ -1,0 +1,17 @@
+/* FIND mobile finishing pass — loaded after dropdowns.css. */
+@media (max-width: 767px) {
+  .searchbar { overflow:visible !important; display:grid !important; grid-template-columns:minmax(0,1fr) !important; gap:15px !important; }
+  .searchbar label { display:flex !important; flex-direction:column !important; align-items:stretch !important; gap:7px !important; min-width:0 !important; height:auto !important; min-height:0 !important; overflow:visible !important; visibility:visible !important; opacity:1 !important; }
+  .searchbar label>span { display:block !important; visibility:visible !important; font-size:10px !important; line-height:1.4 !important; }
+  .searchbar label>.find-select { display:block !important; position:relative !important; width:100% !important; height:auto !important; min-height:46px !important; overflow:visible !important; isolation:auto !important; }
+  /* Show an accessible native mobile picker; never leave an invisible select with a hidden custom trigger. */
+  .searchbar .find-select>select { display:block !important; position:relative !important; inset:auto !important; width:100% !important; height:46px !important; min-height:46px !important; opacity:1 !important; visibility:visible !important; pointer-events:auto !important; z-index:1 !important; appearance:menulist !important; -webkit-appearance:menulist !important; background:#fff !important; color:#1d2828 !important; border:1px solid #d8dedd !important; border-radius:9px !important; padding:10px 13px !important; font-size:13px !important; }
+  .searchbar .find-select>.find-select-trigger,.searchbar .find-select>.find-select-panel { display:none !important; }
+  .searchbar input { height:46px !important; min-height:46px !important; font-size:13px !important; }
+  .find-hero .hero-copy p { display:table !important; width:fit-content !important; max-width:min(100%,340px) !important; margin:12px auto 20px !important; padding:9px 13px !important; border-radius:9px !important; color:#141a1b !important; background:rgba(255,255,255,.87) !important; box-shadow:0 3px 20px rgba(0,0,0,.09) !important; text-shadow:none !important; font-weight:500 !important; line-height:1.5 !important; -webkit-backdrop-filter:blur(7px); backdrop-filter:blur(7px); }
+  .find-hero .hero-copy p b { font-weight:800 !important; color:#111 !important; }
+  .searchbar,.discover,.discover .container,.sectionhead,.grid { min-width:0 !important; }
+}
+@media (min-width:768px) {
+  .find-hero .hero-copy p { text-shadow:0 1px 8px rgba(255,255,255,.65); }
+}
