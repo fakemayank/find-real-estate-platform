@@ -1,0 +1,41 @@
+/* FIND mobile navigation and layout — loaded last to override legacy styles. */
+.mobile-menu-toggle{display:none}
+@media(max-width:767px){
+ html,body{max-width:100%;overflow-x:clip}
+ *,*::before,*::after{box-sizing:border-box}
+ .top{position:relative!important;display:grid!important;grid-template-columns:1fr auto auto!important;align-items:center!important;gap:10px!important;min-height:66px!important;height:auto!important;padding:12px 16px!important;flex-wrap:nowrap!important;z-index:1000!important}
+ .top>.logo{grid-column:1!important;grid-row:1!important;margin:0!important;font-size:26px!important}
+ .top>.header-actions{grid-column:2!important;grid-row:1!important;min-width:0!important;margin:0!important}
+ .top #authbar{display:flex;align-items:center;justify-content:flex-end}
+ .top #authbar .btn{padding:10px 13px!important;font-size:12px!important;min-height:38px!important;white-space:nowrap}
+ .mobile-menu-toggle{display:inline-flex!important;grid-column:3;grid-row:1;align-items:center;justify-content:center;width:40px;height:40px;padding:0;border:1px solid #dfe4e4;border-radius:11px;background:#fff;color:#192224;cursor:pointer;font-size:17px}
+ .mobile-menu-toggle:focus-visible{outline:2px solid #4d7869;outline-offset:2px}
+ .top nav{display:none!important;position:absolute!important;top:calc(100% - 1px)!important;left:12px!important;right:12px!important;width:auto!important;max-height:min(72vh,560px)!important;overflow-y:auto!important;z-index:1200!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;flex-wrap:nowrap!important;gap:3px!important;padding:10px!important;margin:0!important;background:#fff!important;border:1px solid #e2e7e6!important;border-radius:13px!important;box-shadow:0 20px 45px rgba(20,30,28,.16)!important}
+ .top.menu-open nav{display:flex!important}
+ .top nav a,.top nav>a:nth-child(2),.top nav>a:last-child{display:flex!important;align-items:center!important;width:100%!important;min-height:43px!important;padding:11px 13px!important;border-radius:8px!important;color:#26332e!important;font-size:13px!important;text-align:left!important;white-space:normal!important}
+ .top nav a.hidden{display:none!important}
+ .top nav a:hover,.top nav a:focus-visible{background:#f1f5f2!important}
+ .top nav a::after{display:none!important}
+ .container,main>.container,.discover .container{width:100%!important;max-width:100%!important;padding-left:16px!important;padding-right:16px!important}
+ .find-hero{min-height:clamp(540px,78svh,760px)!important;padding:72px 18px 72px!important}
+ .hero-copy{width:100%!important;max-width:100%!important;padding:0 8px!important}
+ .find-hero h1{font-size:clamp(37px,10vw,60px)!important;line-height:1.06!important;letter-spacing:-.055em!important;overflow-wrap:normal}
+ .find-hero p{font-size:13px!important;line-height:1.6!important}
+ .hero-bottom-note{left:20px!important;right:20px!important;font-size:9px!important}
+ .discover-intro,.sectionhead{min-width:0!important}
+ .discover-intro h2{font-size:clamp(25px,7vw,36px)!important;line-height:1.2!important}
+ .searchbar{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:12px!important;overflow:visible!important;padding:16px!important;width:100%!important;max-width:100%!important}
+ .searchbar>*{min-width:0!important;width:100%!important;max-width:100%!important;flex:none!important;margin:0!important}
+ .searchbar label{min-width:0!important;display:block!important}
+ .searchbar input,.searchbar select,.searchbar .find-select-trigger{width:100%!important;max-width:100%!important;min-height:45px!important}
+ .searchbar .btn{width:100%!important;min-height:45px!important}
+ /* On phones, use the OS select picker: no dropdown overlap or clipped menus. */
+ .find-select{isolation:auto!important}
+ .find-select>select{position:relative!important;inset:auto!important;opacity:1!important;pointer-events:auto!important;z-index:auto!important;appearance:auto!important;-webkit-appearance:menulist!important;min-height:45px!important;background:#fff!important;color:#26312e!important;border:1px solid #d9dfe4!important;border-radius:9px!important;padding:10px 12px!important}
+ .find-select>.find-select-trigger,.find-select>.find-select-panel{display:none!important}
+ .grid,.dashgrid,.statrow,.formgrid{min-width:0!important;max-width:100%!important}
+ .grid>* , .dashgrid>*,.statrow>*,.formgrid>*{min-width:0!important}
+ .card,.panel,.property,.userline{max-width:100%!important}
+ .find-footer,.find-footer-inner{max-width:100%!important}
+}
+@media(max-width:380px){.top{gap:7px!important;padding:10px 12px!important}.mobile-menu-toggle{width:36px;height:36px}.top #authbar .btn{padding:9px 10px!important}}

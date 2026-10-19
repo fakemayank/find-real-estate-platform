@@ -19,7 +19,7 @@
   <link href="/modal.css?v=20261019-footerfix" rel="stylesheet"/>
   <link href="/admin-polish.css?v=20261019-footerfix" rel="stylesheet"/>
   <link href="/navigation-polish.css?v=20261019-footerfix" rel="stylesheet"/>
-  <link href="/access-polish.css?v=20261019-footerfix" rel="stylesheet"/>
+  <link href="/access-polish.css?v=20261019-access-role-fix" rel="stylesheet"/>
   <link href="/custom-ui.css?v=20261019-footerfix" rel="stylesheet"/>
   <link href="/experience.css?v=20261019-footerfix" rel="stylesheet"/>
   <link href="/theme-history.css?v=20261019b" rel="stylesheet"/>
@@ -27,35 +27,39 @@
   <link href="/assignment-fixes.css?v=gallery-preview-fix2" rel="stylesheet"/>
  <link href="/owner-studio.css?v=studio-1" rel="stylesheet"/>
  <link href="/directory-minimal.css?v=gallery-preview-fix2" rel="stylesheet"/>
+  <link href="/mobile-fix.css?v=20261019-mobile1" rel="stylesheet"/>
+  <link href="/directory-mobile-fix.css?v=20261019-1" rel="stylesheet"/>
+<link rel="stylesheet" href="/admin-editorial.css?v=20261019-admin2"/>
+  <link rel="stylesheet" href="/mobile-hero-spacing.css?v=20261019-hero-final3"/>
 </head>
  <body>
   <script>
    document.documentElement.removeAttribute("data-theme");try{localStorage.removeItem("find-color-mode")}catch(e){}
   </script>
   <header class="top">
-   <a class="logo" href="#home">
+   <a class="logo" href="/">
     FIND
     <span>
      .
     </span>
    </a>
    <nav aria-label="Main navigation">
-    <a href="#search">
+    <a href="/search">
      Search
     </a>
-    <a href="#explore">
+    <a href="/explore">
      Explore
     </a>
-    <a class="ownerlink hidden" href="#owner">
+    <a class="ownerlink hidden" href="/my-listings">
      My Listings
     </a>
-    <a class="adminlink hidden" href="#admin">
+    <a class="adminlink hidden" href="/admin">
      Management
     </a>
-    <a class="rootlink hidden" href="#root">
+    <a class="rootlink hidden" href="/admin/access">
      Administrator
     </a>
-    <a class="historylink hidden" href="#enquiry-history">
+    <a class="historylink hidden" href="/admin/enquiries">
      Enquiry logs
     </a>
     <a href="#register">
@@ -73,7 +77,7 @@
    <div class="find-footer-inner">
     <div class="find-footer-top">
      <div class="find-footer-intro">
-      <a aria-label="FIND home" class="logo" href="#home">
+      <a aria-label="FIND home" class="logo" href="/">
        FIND
        <span>
         .
@@ -88,16 +92,16 @@
        <h4>
         Explore
        </h4>
-       <a href="#explore">
+       <a href="/explore">
         All properties
        </a>
-       <a href="#buy">
+       <a href="/buy">
         Properties for sale
        </a>
-       <a href="#rent">
+       <a href="/rent">
         Properties for rent
        </a>
-       <a href="#search">
+       <a href="/search">
         Find a property
        </a>
       </div>
@@ -105,10 +109,10 @@
        <h4>
         Company
        </h4>
-       <a href="#owner">
+       <a href="/my-listings">
         List a property
        </a>
-       <a href="#explore">
+       <a href="/explore">
         Our collection
        </a>
        <a href="mailto:hello@findrealestate.example">
@@ -173,10 +177,11 @@
    document.getElementById("copyrightYear").textContent=new Date().getFullYear()
   </script>
   <link href="/dropdowns.css?v=20261019-footerfix" rel="stylesheet"/>
-  <script defer="" src="/dropdowns.js?v=20261019-footerfix">
+  <script defer="" src="/dropdowns.js?v=20261019-access-role-fix">
   </script>
   <script defer="" src="/app.js?v=gallery-preview-fix2">
   </script>
+  <script defer src="/mobile-fix.js?v=20261019-mobile1"></script>
  </body>
 </html>
 

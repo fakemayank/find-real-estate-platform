@@ -1,0 +1,47 @@
+/* FIND / ADMIN WORKSPACE — compact editorial controls, responsive layouts */
+:root{--find-ink:#202724;--find-muted:#697570;--find-line:#e2e8e4;--find-paper:#fff;--find-accent:#385e4d}
+.access-workspace,.admin-workspace,.enquiry-folder-workspace{max-width:1200px;width:100%;min-width:0}
+.access-workspace *, .admin-workspace *, .enquiry-folder-workspace *{box-sizing:border-box}
+.access-workspace .panel,.admin-workspace .panel,.enquiry-folder-workspace .panel{border:1px solid var(--find-line);box-shadow:0 8px 28px rgba(29,43,36,.035);border-radius:14px}
+.access-workspace .statrow,.admin-workspace .statrow{gap:12px}
+.access-workspace .stat,.admin-workspace .stat{min-width:0;border-radius:12px;padding:18px 20px;box-shadow:none}
+.access-workspace .stat b,.admin-workspace .stat b{color:var(--find-ink);font-weight:650}
+.access-list{min-width:0}
+.access-user.access-member-row{display:flex;align-items:center;justify-content:space-between;gap:16px;min-width:0;padding:16px 0;border-radius:0;box-shadow:none;border:0;border-bottom:1px solid var(--find-line);background:transparent}
+.access-user.access-member-row:last-child{border-bottom:0}
+.access-person{display:flex;align-items:center;gap:12px;flex:1 1 210px;min-width:0}
+.access-identity{min-width:0;overflow-wrap:anywhere}
+.access-identity strong{font-size:14px;font-weight:650}
+.access-identity span,.access-identity small{font-size:12px;line-height:1.6;color:var(--find-muted)}
+.access-actions.access-member-actions{display:flex;align-items:center;justify-content:flex-end;flex:0 1 auto;gap:8px;min-width:0;flex-wrap:wrap}
+.access-workspace .access-role{padding:6px 9px;border-radius:6px;font-size:11px;white-space:normal;box-shadow:none}
+.access-workspace .access-role i{font-size:11px}
+.access-workspace button.btn.small,.access-workspace .access-edit,.access-workspace .access-delete{min-height:33px!important;height:auto!important;padding:7px 11px!important;border-radius:7px!important;font-size:12px!important;line-height:1.25!important;font-weight:600!important;box-shadow:none!important;transform:none!important;transition:background .15s,border-color .15s!important}
+.access-workspace .access-edit{background:#f1f5f2!important;color:#315645!important;border:1px solid #dce8df!important}
+.access-workspace .access-delete{background:#fff!important;color:#a94b48!important;border:1px solid #eedbd9!important}
+.access-workspace .access-edit:hover{background:#e5eee7!important}
+.access-workspace .access-delete:hover{background:#fff1f0!important}
+.access-modal-backdrop{padding:18px;overflow-y:auto;align-items:center;justify-content:center}
+.access-modal{max-width:440px;width:min(100%,440px);max-height:calc(100dvh - 36px);overflow-y:auto;border-radius:16px;box-shadow:0 24px 80px rgba(15,26,20,.19)}
+.access-modal #accessRoleSelect{display:block!important;width:100%!important;min-height:46px!important;opacity:1!important;visibility:visible!important;position:relative!important;appearance:auto!important;-webkit-appearance:menulist!important;color:#202724!important;background:#fff!important;border:1px solid #d6dfd8!important;border-radius:8px!important}
+.access-modal-actions{display:flex;gap:9px;justify-content:flex-end;flex-wrap:wrap}
+.access-modal-actions .btn{box-shadow:none!important;transform:none!important;border-radius:8px!important;font-size:12px!important;min-height:37px!important;padding:8px 12px!important}
+.access-error{color:#b3413c;font-size:12px;margin-top:8px}
+.admin-workspace .btn,.enquiry-folder-workspace .btn{box-shadow:none!important;transform:none!important;border-radius:7px!important}
+.admin-workspace .btn.small,.enquiry-folder-workspace .btn.small{min-height:34px!important;padding:8px 12px!important;font-size:12px!important}
+.admin-workspace .admin-heading,.access-workspace .access-heading{gap:18px;flex-wrap:wrap}
+.admin-workspace .enquiry-card,.admin-workspace .review-card{min-width:0}
+.admin-workspace img{max-width:100%;height:auto}
+@media(max-width:740px){
+ .access-workspace,.admin-workspace,.enquiry-folder-workspace{padding-inline:16px!important;max-width:100%;overflow-x:clip}
+ .access-workspace .statrow,.admin-workspace .statrow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .access-workspace .stat,.admin-workspace .stat{padding:14px}
+ .access-user.access-member-row{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:10px!important;padding:16px 0!important}
+ .access-person{flex:initial!important;width:100%;min-width:0}
+ .access-actions.access-member-actions{width:100%!important;flex:initial!important;justify-content:flex-start!important;align-items:center!important;gap:7px!important;flex-wrap:wrap!important;position:static!important;overflow:visible!important}
+ .access-member-actions>*{position:static!important;max-width:100%;white-space:normal}
+ .access-modal{padding:22px 18px!important}
+ .access-modal-actions{justify-content:flex-end}
+ .admin-workspace .admin-grid,.admin-workspace .admin-columns{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+}
+@media(max-width:380px){.access-workspace .statrow,.admin-workspace .statrow{grid-template-columns:1fr}.access-workspace .access-role{font-size:10px}.access-modal-actions .btn{flex:1}}

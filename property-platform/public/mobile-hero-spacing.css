@@ -1,0 +1,55 @@
+/* FIND mobile hero — final, intentional layout override.
+   Keep this stylesheet AFTER the other styles in index.html.
+   The previous blank band came from .hero-copy margin-top:143px/150px
+   combined with a tall hero and top-aligned flex content. */
+@media (max-width: 767px) {
+  .find-hero {
+    box-sizing: border-box;
+    height: clamp(490px, 73svh, 620px) !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding: 20px 20px 34px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center;
+  }
+  .find-hero .hero-copy {
+    box-sizing: border-box;
+    margin: 0 auto !important;
+    padding: 0 4px !important;
+    width: 100% !important;
+    max-width: 540px !important;
+    flex: 0 0 auto;
+    transform: none;
+  }
+  .find-hero h1 {
+    margin: 0 auto 12px !important;
+    font-size: clamp(34px, 9vw, 49px) !important;
+    line-height: 1.09 !important;
+    letter-spacing: -.055em !important;
+  }
+  .find-hero p {
+    margin: 0 auto 18px !important;
+    max-width: 340px;
+    line-height: 1.55 !important;
+  }
+  .find-hero .hero-photo {
+    background-position: center 73% !important;
+  }
+  .find-hero::before {
+    background: linear-gradient(180deg, rgba(246,247,245,.20), rgba(246,247,245,.33) 48%, rgba(0,0,0,.07) 100%);
+  }
+}
+@media (max-width: 390px) {
+  .find-hero {
+    height: clamp(470px, 70svh, 565px) !important;
+    padding-inline: 14px !important;
+  }
+  .find-hero h1 { font-size: clamp(32px, 9.2vw, 40px) !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .find-hero .hero-copy { animation: none !important; }
+  .find-hero .hero-photo { transition: none !important; }
+}

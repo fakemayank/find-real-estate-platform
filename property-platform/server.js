@@ -449,10 +449,12 @@ app.get('/api/root/users',auth('root'),wrap(async(req,res)=> {
 }
 ));
 app.patch('/api/root/users/:id/role',auth('root'),wrap(async(req,res)=> {
-    const p=z.object( {
-        role:z.enum(['customer','owner','admin'])
-    }
-    ).safeParse(req.body); if(!p.success)return fail(res,'Invalid role'); const r=await q("UPDATE users SET role=$1 WHERE id=$2 AND role<>'root' RETURNING id,name,email,role",[p.data.role,req.params.id]); if(!r.rowCount)return res.status(403).json( {
+    // Accept a single role value from native or custom form controls.
+    // Never trust labels or unknown role values for authorization.
+    const rawRole = req.body?.role;
+    const role = typeof rawRole === 'string' ? rawRole.trim().toLowerCase() : '';
+    const parsed = z.enum(['customer', 'owner', 'admin']).safeParse(role);
+    if (!parsed.success) return fail(res, 'Select Customer, Property owner or Administrator'); const r=await q("UPDATE users SET role=$1 WHERE id=$2 AND role<>'root' RETURNING id,name,email,role",[parsed.data,req.params.id]); if(!r.rowCount)return res.status(403).json( {
         error:'Root account cannot be modified'
     }
     ); res.json(r.rows[0]);

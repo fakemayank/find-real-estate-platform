@@ -134,11 +134,11 @@ async function loadUser() {
 }
 </strong><small>${esc(me.email||roleLabel[me.role])
 }
-</small></div></div><div class="account-menu-links"><a href="#explore"><i class="fa-solid fa-compass menu-icon-explore"></i> Explore properties</a>${['owner','root'].includes(me.role)?'<a href="#owner"><i class="fa-solid fa-building-circle-check menu-icon-owner"></i> My listings</a>':''
+</small></div></div><div class="account-menu-links"><a href="/explore"><i class="fa-solid fa-compass menu-icon-explore"></i> Explore properties</a>${['owner','root'].includes(me.role)?'<a href="/my-listings"><i class="fa-solid fa-building-circle-check menu-icon-owner"></i> My listings</a>':''
 }
-${['admin','root'].includes(me.role)?'<a href="#admin"><i class="fa-solid fa-clipboard-check menu-icon-admin"></i> Review & enquiries</a><a href="#enquiry-history"><i class="fa-solid fa-clock-rotate-left menu-icon-admin"></i> Enquiry history</a>':''
+${['admin','root'].includes(me.role)?'<a href="/admin"><i class="fa-solid fa-clipboard-check menu-icon-admin"></i> Review & enquiries</a><a href="/admin/enquiries"><i class="fa-solid fa-clock-rotate-left menu-icon-admin"></i> Enquiry history</a>':''
 }
-${me.role==='root'?'<a href="#root"><i class="fa-solid fa-user-shield menu-icon-root"></i> Root control center</a>':''
+${me.role==='root'?'<a href="/admin/access"><i class="fa-solid fa-user-shield menu-icon-root"></i> Root control center</a>':''
 }
 <button id="logout" type="button"><i class="fa-solid fa-right-from-bracket menu-icon-signout"></i> Sign out</button></div></div></div>`:'<button class="nav-signin" id="openSignin"><i class="fa-regular fa-user"></i> Sign in</button>';
 document.querySelectorAll('.ownerlink').forEach(x=>x.classList.toggle('hidden',!['owner','root'].includes(me?.role)));
@@ -160,7 +160,7 @@ document.querySelector('#logout')?.addEventListener('click',async()=> {
         await api('/auth/logout', {
             method:'POST'
         }
-        ); await loadUser(); closeAuth(); location.hash='#home'; route()
+        ); await loadUser(); closeAuth(); navigate('home'); route()
     }
     catch(e) {
         notice(e.message)
@@ -303,7 +303,7 @@ photo ${i+1
 const img=p=>p.photos?.[0]?`<img src="${esc(p.photos[0])
 }
 " alt="Property photo" loading="lazy">`:'<div class="placeholder"><i class="fa-regular fa-image" aria-hidden="true"></i><span>Photo coming soon</span></div>';
-const card=p=>`<a class="property" href="#property/${p.id
+const card=p=>`<a class="property" href="/property/${p.id
 }
 "><div class="property-media">${img(p)
 }
@@ -328,7 +328,7 @@ function error(e) {
 async function home(initialFilters= {
 }
 ) {
-    app.innerHTML=`<section class="hero find-hero"><div class="hero-photo"></div><div class="hero-copy"><h1>Find What <strong>Moves You</strong></h1><p>Expert agents. <b>Real guidance.</b> A clear path to find what’s next.</p><a class="hero-cta" href="#explore">Find Properties <i class="fa-solid fa-arrow-right"></i></a></div><div class="hero-bottom-note">DISCOVER MORE <span></span> GUJARAT, INDIA</div></section><section class="discover" id="listings"><div class="container"><div class="discover-intro"><div><span class="eyebrow">THE FIND COLLECTION</span><h2>A place for every <em>possibility.</em></h2></div><p>Discover beautiful spaces designed for the life you’re building.</p></div><form class="searchbar" id="search"><label><span>KEYWORD</span><input name="search" placeholder="Area, address or keyword"></label><label><span>LOCATION</span><input name="city" placeholder="City in Gujarat"></label><label><span>LOOKING TO</span><select name="listing"><option value="">Buy or rent</option><option value="sale">Buy</option><option value="rent">Rent</option></select></label><label><span>PROPERTY TYPE</span><select name="type"><option value="">All types</option><option value="apartment">Apartment</option><option value="house">House</option><option value="villa">Villa</option><option value="plot">Plot</option><option value="commercial">Commercial</option></select></label><label><span>MIN PRICE</span><input type="number" name="minPrice" min="0" placeholder="₹ Minimum"></label><label><span>MAX PRICE</span><input type="number" name="maxPrice" min="0" placeholder="₹ Maximum"></label><button class="btn search-action"><i class="fa-solid fa-magnifying-glass"></i> Search</button></form><div class="sectionhead"><div><span class="eyebrow">CURATED FOR YOU</span><h2>Explore exceptional spaces.</h2></div><span class="muted" id="count">Loading...</span></div><div class="grid" id="properties"></div></div></section><section class="architecture-story" aria-label="Discover the architecture of home"><div class="architecture-story-copy"><span class="eyebrow">SPACE TO IMAGINE</span><h2>Perspective changes<br><em>everything.</em></h2><p>Discover places with room for what comes next.</p><a href="#explore" class="architecture-story-link">Explore the collection <i class="fa-solid fa-arrow-right"></i></a></div><div class="architecture-stage"><img class="architecture-building" src="/architecture-building.png" alt="Architectural illustration of a modern residential tower" loading="lazy"></div></section><section class="editorial-band"><div class="editorial-inner"><div><span class="eyebrow">MORE THAN A LISTING</span><h2>Home is where<br><em>everything begins.</em></h2></div><p>Finding property should feel inspiring, straightforward, and entirely yours. Take the next step with confidence.</p><a href="#register" class="editorial-link">Get started <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></section>`;
+    app.innerHTML=`<section class="hero find-hero"><div class="hero-photo"></div><div class="hero-copy"><h1>Find What <strong>Moves You</strong></h1><p>Expert agents. <b>Real guidance.</b> A clear path to find what’s next.</p><a class="hero-cta" href="/explore">Find Properties <i class="fa-solid fa-arrow-right"></i></a></div><div class="hero-bottom-note">DISCOVER MORE <span></span> GUJARAT, INDIA</div></section><section class="discover" id="listings"><div class="container"><div class="discover-intro"><div><span class="eyebrow">THE FIND COLLECTION</span><h2>A place for every <em>possibility.</em></h2></div><p>Discover beautiful spaces designed for the life you’re building.</p></div><form class="searchbar" id="search"><label><span>KEYWORD</span><input name="search" placeholder="Area, address or keyword"></label><label><span>LOCATION</span><input name="city" placeholder="City in Gujarat"></label><label><span>LOOKING TO</span><select name="listing"><option value="">Buy or rent</option><option value="sale">Buy</option><option value="rent">Rent</option></select></label><label><span>PROPERTY TYPE</span><select name="type"><option value="">All types</option><option value="apartment">Apartment</option><option value="house">House</option><option value="villa">Villa</option><option value="plot">Plot</option><option value="commercial">Commercial</option></select></label><label><span>MIN PRICE</span><input type="number" name="minPrice" min="0" placeholder="₹ Minimum"></label><label><span>MAX PRICE</span><input type="number" name="maxPrice" min="0" placeholder="₹ Maximum"></label><button class="btn search-action"><i class="fa-solid fa-magnifying-glass"></i> Search</button></form><div class="sectionhead"><div><span class="eyebrow">CURATED FOR YOU</span><h2>Explore exceptional spaces.</h2></div><span class="muted" id="count">Loading...</span></div><div class="grid" id="properties"></div></div></section><section class="architecture-story" aria-label="Discover the architecture of home"><div class="architecture-story-copy"><span class="eyebrow">SPACE TO IMAGINE</span><h2>Perspective changes<br><em>everything.</em></h2><p>Discover places with room for what comes next.</p><a href="/explore" class="architecture-story-link">Explore the collection <i class="fa-solid fa-arrow-right"></i></a></div><div class="architecture-stage"><img class="architecture-building" src="/architecture-building.png" alt="Architectural illustration of a modern residential tower" loading="lazy"></div></section><section class="editorial-band"><div class="editorial-inner"><div><span class="eyebrow">MORE THAN A LISTING</span><h2>Home is where<br><em>everything begins.</em></h2></div><p>Finding property should feel inspiring, straightforward, and entirely yours. Take the next step with confidence.</p><a href="#register" class="editorial-link">Get started <i class="fa-solid fa-arrow-up-right-from-square"></i></a></div></section>`;
     const render=async(params= {
     }
     )=> {
@@ -387,7 +387,7 @@ function initHeroMotion() {
 }
 async function detail(id) {
     const p=await api('/properties/'+id);
-    app.innerHTML=`<div class="container"><a href="#home" class="muted back-link"><i class="fa-solid fa-arrow-left"></i> Back to properties</a><div class="sectionhead"><div><div class="eyebrow">${esc(p.listing_type)
+    app.innerHTML=`<div class="container"><a href="/" class="muted back-link"><i class="fa-solid fa-arrow-left"></i> Back to properties</a><div class="sectionhead"><div><div class="eyebrow">${esc(p.listing_type)
 }
 · ${esc(p.property_type)
 }
@@ -510,7 +510,7 @@ function openAuth(startRegister=false) {
             );
             await loadUser();
             closeAuth();
-            location.hash=me.role==='owner'?'#owner':['admin','root'].includes(me.role)?'#admin':'#home';
+            navigate(me.role==='owner'?'owner':['admin','root'].includes(me.role)?'admin':'home');
             route();
             notice('Welcome to FIND')
         }
@@ -633,7 +633,7 @@ async function owner() {
     if(!['owner','root'].includes(me?.role)) {
         if(!me)return openAuth(false);
         notice('Only property owners can manage listings');
-        location.hash='#home';
+        navigate('home');
         return
     }
     const items=await api('/owner/properties');
@@ -898,7 +898,7 @@ document.querySelectorAll('[data-submit]').forEach(b=>b.onclick=async()=> {
 async function admin() {
     if(!['admin','root'].includes(me?.role)) {
         notice('Administrator access required');
-        location.hash='#home';
+        navigate('home');
         return
     }
     const [props,enquiries]=await Promise.all([api('/admin/properties'),api('/admin/enquiries')]);
@@ -907,9 +907,9 @@ async function admin() {
 "><i class="fa-solid fa-circle" aria-hidden="true"></i>${esc(status)
 }
 </span>`;
-app.innerHTML=`<div class="container admin-workspace"><div class="admin-heading"><div><div class="eyebrow">ADMINISTRATION / WORKSPACE</div><h2>Review & enquiries</h2><p class="muted">Review submissions, protect listing quality and manage customer conversations.</p></div>${me.role==='root'?'<a class="btn secondary small" href="#root"><i class="fa-solid fa-shield-halved"></i> Root control center</a>':''
+app.innerHTML=`<div class="container admin-workspace"><div class="admin-heading"><div><div class="eyebrow">ADMINISTRATION / WORKSPACE</div><h2>Review & enquiries</h2><p class="muted">Review submissions, protect listing quality and manage customer conversations.</p></div>${me.role==='root'?'<a class="btn secondary small" href="/admin/access"><i class="fa-solid fa-shield-halved"></i> Root control center</a>':''
 }
-</div><div class="admin-toolbar"><a href="#enquiry-history" class="btn secondary"><i class="fa-solid fa-clock-rotate-left"></i> Saved enquiry logs</a></div><div class="admin-overview"><div><span>Awaiting review</span><strong>${props.filter(p=>p.status==='pending').length
+</div><div class="admin-toolbar"><a href="/admin/enquiries" class="btn secondary"><i class="fa-solid fa-clock-rotate-left"></i> Saved enquiry logs</a></div><div class="admin-overview"><div><span>Awaiting review</span><strong>${props.filter(p=>p.status==='pending').length
 }
 </strong></div><div><span>Approved listings</span><strong>${props.filter(p=>p.status==='approved').length
 }
@@ -1084,7 +1084,7 @@ document.querySelectorAll('[data-enquiry]').forEach(button => {
 
 async function enquiryHistory() {
     if(!['admin','root'].includes(me?.role)) {
-        location.hash='#home';
+        navigate('home');
         return
     }
     const [enquiries,logs]=await Promise.all([api('/admin/enquiries'),api('/admin/enquiry-history')]);
@@ -1150,7 +1150,7 @@ updates</span><i class="fa-solid fa-chevron-down enquiry-folder-chevron"></i></s
 </div></div>`).join('')||'<p class="enquiry-folder-empty">No recorded changes for this enquiry.</p>'
 }
 </div></div></details>`).join('');
-app.innerHTML=`<div class="container admin-workspace enquiry-folder-workspace"><div class="admin-heading"><div><div class="eyebrow">ADMINISTRATION / CUSTOMER RELATIONS</div><h2>Enquiry logs</h2><p class="muted">Saved enquiries organised by property. Select a folder to view details and activity.</p></div><a href="#admin" class="btn secondary small"><i class="fa-solid fa-arrow-left"></i> Active enquiries</a></div><section class="enquiry-folder-panel"><div class="enquiry-folder-panel-heading"><h3><i class="fa-regular fa-folder-open"></i> Saved enquiries</h3><span>${archived.length
+app.innerHTML=`<div class="container admin-workspace enquiry-folder-workspace"><div class="admin-heading"><div><div class="eyebrow">ADMINISTRATION / CUSTOMER RELATIONS</div><h2>Enquiry logs</h2><p class="muted">Saved enquiries organised by property. Select a folder to view details and activity.</p></div><a href="/admin" class="btn secondary small"><i class="fa-solid fa-arrow-left"></i> Active enquiries</a></div><section class="enquiry-folder-panel"><div class="enquiry-folder-panel-heading"><h3><i class="fa-regular fa-folder-open"></i> Saved enquiries</h3><span>${archived.length
 }
 ${archived.length===1?'folder':'folders'
 }
@@ -1168,7 +1168,7 @@ async function rootPanel() {
         customer:'Customer',owner:'Property owner',admin:'Administrator',root:'Administrator'
     }
     ;
-    app.innerHTML=`<div class="container access-workspace"><div class="eyebrow">ADMINISTRATION / ACCESS</div><div class="access-heading"><div><h2>User access management</h2><p class="muted">Manage permissions and accounts across the platform.</p></div><a href="#admin" class="btn secondary small"><i class="fa-solid fa-clipboard-check"></i> Review & enquiries</a></div><div class="statrow"><div class="stat"><b>${stats.users
+    app.innerHTML=`<div class="container access-workspace"><div class="eyebrow">ADMINISTRATION / ACCESS</div><div class="access-heading"><div><h2>User access management</h2><p class="muted">Manage permissions and accounts across the platform.</p></div><a href="/admin" class="btn secondary small"><i class="fa-solid fa-clipboard-check"></i> Review & enquiries</a></div><div class="statrow"><div class="stat"><b>${stats.users
 }
 </b><span>Registered users</span></div><div class="stat"><b>${stats.properties.reduce((n,x)=>n+x.n,0)
 }
@@ -1220,7 +1220,7 @@ document.querySelectorAll('[data-edit-access]').forEach(btn=>btn.onclick=()=> {
     e.preventDefault(); const submit=e.target.querySelector('[type="submit"]'); submit.disabled=true; try {
         await api('/root/users/'+u.id+'/role', {
             method:'PATCH',body: {
-                role:overlay.querySelector('#accessRoleSelect').value
+                role: String(overlay.querySelector('#accessRoleSelect')?.value || '').trim().toLowerCase()
             }
         }
         ); close(); notice('Account access updated'); await rootPanel()
@@ -1252,9 +1252,39 @@ catch(err) {
 }
 );
 }
+// Browser-history routes: clean URLs, refresh and back/forward support.
+const routePaths = Object.freeze({
+    home: '/', search: '/search', explore: '/explore', listings: '/explore',
+    buy: '/buy', rent: '/rent', owner: '/my-listings', admin: '/admin',
+    root: '/admin/access', 'enquiry-history': '/admin/enquiries',
+    login: '/login', register: '/register'
+});
+function pathForRoute(name) {
+    if (name.startsWith('property/')) return '/' + name;
+    return routePaths[name] || '/';
+}
+function routeFromPath(pathname) {
+    const path = pathname.replace(/\/+$/, '') || '/';
+    if (path.startsWith('/property/')) return path.slice(1);
+    return Object.keys(routePaths).find(name => routePaths[name] === path) || 'home';
+}
+function navigate(name, {replace = false} = {}) {
+    const path = pathForRoute(name);
+    if (location.pathname !== path || location.hash) {
+        history[replace ? 'replaceState' : 'pushState']({}, '', path);
+    }
+    route();
+}
+// Convert older bookmarked hash URLs to canonical paths without losing the page.
+if (location.hash && !location.hash.startsWith('#!')) {
+    const old = decodeURIComponent(location.hash.slice(1));
+    if (routePaths[old] || /^property\/\d+$/.test(old)) {
+        history.replaceState({}, '', pathForRoute(old) + location.search);
+    }
+}
 async function route() {
     try {
-        const hash=location.hash.slice(1)||'home';
+        const hash=routeFromPath(location.pathname);
         if(hash==='home')await home();
         else if(hash==='buy') {
             await home( {
@@ -1323,7 +1353,7 @@ async function route() {
         }
         else if(hash.startsWith('property/'))await detail(hash.split('/')[1]);
         else {
-            location.hash='#home';
+            navigate('home');
             await home()
         }
     }
@@ -1332,7 +1362,7 @@ async function route() {
         error(e)
     }
 }
-window.addEventListener('hashchange',route);
+window.addEventListener('popstate',route);
 loadUser().then(route).catch(error);
 
 // Open account access as an overlay without navigating away from the current page.
@@ -1370,24 +1400,31 @@ function initArchitectureMotion() {
     );
     update()
 }
-document.addEventListener('click',e=> {
-    const a=e.target.closest('a[href^="#"]'); if(!a)return; const target=a.getAttribute('href').slice(1); if(target===location.hash.slice(1)&&['search','explore','listings','buy','rent'].includes(target)) {
-        e.preventDefault(); if(target==='search'||target==='explore'||target==='listings') {
-            document.querySelector('#listings')?.scrollIntoView( {
-                behavior:'smooth'
-            }
-            ); if(target==='search')setTimeout(()=>document.querySelector('#search input[name="search"]')?.focus( {
-                preventScroll:true
-            }
-            ),300)
-        }
-        else route()
-    }
-}
-);
+// Delegate internal navigation, including dynamically rendered listing cards.
+document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const target = a.getAttribute('href').slice(1);
+    if (target === 'login' || target === 'register') return; // Auth modal handler.
+    if (!(routePaths[target] || /^property\/\d+$/.test(target))) return;
+    e.preventDefault();
+    navigate(target);
+});
 
 // Gallery interaction is delegated because the admin view is re-rendered after actions.
 document.addEventListener('click',event=> {
     const button=event.target.closest('[data-gallery-property]'); if(!button)return; const card=button.closest('.admin-card'); const buttons=[...(card?.querySelectorAll('[data-gallery-property]')||[])]; const photos=buttons.map(b=>b.querySelector('img')?.getAttribute('src')).filter(Boolean); const heading=card?.querySelector('.admin-card-title h3')?.textContent||'Property photos'; openPhotoViewer(photos,Number(button.dataset.galleryIndex)||0,heading)
 }
 );
+
+// SPA navigation for links rendered with canonical, clean paths.
+document.addEventListener('click', e => {
+    const link = e.target.closest('a[href^="/"]');
+    if (!link || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || link.hasAttribute('download')) return;
+    const url = new URL(link.href, location.href);
+    if (url.origin !== location.origin || url.pathname.startsWith('/api/') || url.pathname.startsWith('/assets/')) return;
+    const name = routeFromPath(url.pathname);
+    if (name === 'home' && url.pathname !== '/') return;
+    e.preventDefault();
+    navigate(name);
+});
